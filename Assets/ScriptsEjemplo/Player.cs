@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     public float slideVelocity;
     public float slopeForceDown;
 
-    private Vector3 spawn = new Vector3(-15, 2, -117);
+    private Vector3 spawn = new Vector3(0, 0, 0);
 
     void Start()
     {
@@ -90,19 +90,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        hitNormal = hit.normal;
-        if (hit.collider.name == "Water")
-        {
-            electrocute();
-        }
-        // else if (hit.collider.name == "Platform")
-        // {
-        //     // TO-DO: player gets flat once enters the platform
-        //     transform.SetParent(hit.gameObject.transform, false);
-        // }
-    }
+    // private void OnControllerColliderHit(ControllerColliderHit hit)
+    // {
+    //     hitNormal = hit.normal;
+    //     if (hit.collider.name == "Water")
+    //     {
+    //         electrocute();
+    //     }
+    //     // else if (hit.collider.name == "Platform")
+    //     // {
+    //     //     // TO-DO: player gets flat once enters the platform
+    //     //     transform.SetParent(hit.gameObject.transform, false);
+    //     // }
+    // }
 
     public void slideDown()
     {
@@ -117,9 +117,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void electrocute()
-    {
-        // TO-DO: animations/count deaths
-        transform.position = spawn;
-    }
+    // public void electrocute()
+    // {
+    //     // TO-DO: animations/count deaths
+    //     transform.position = spawn;
+    // }
 }
