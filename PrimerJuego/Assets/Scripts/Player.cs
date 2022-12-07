@@ -90,20 +90,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    // private void OnControllerColliderHit(ControllerColliderHit hit)
-    // {
-    //     hitNormal = hit.normal;
-    //     if (hit.collider.name == "Water")
-    //     {
-    //         electrocute();
-    //     }
-    //     // else if (hit.collider.name == "Platform")
-    //     // {
-    //     //     // TO-DO: player gets flat once enters the platform
-    //     //     transform.SetParent(hit.gameObject.transform, false);
-    //     // }
-    // }
-
     public void slideDown()
     {
         isOnSlope = Vector3.Angle(Vector3.up, hitNormal) >= player.slopeLimit;
@@ -116,10 +102,4 @@ public class Player : MonoBehaviour
             movePlayer.y = slopeForceDown;
         }
     }
-
-    // public void electrocute()
-    // {
-    //     // TO-DO: animations/count deaths
-    //     transform.position = spawn;
-    // }
 }
