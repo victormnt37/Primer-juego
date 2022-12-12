@@ -10,7 +10,7 @@ public class PlayerCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("Player1").transform;
+        target = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame
