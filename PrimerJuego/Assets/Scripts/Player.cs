@@ -9,10 +9,12 @@ public class Player : MonoBehaviour
 
     public CharacterController player;
 
-    public float playerSpeed = 3;
+    public float playerSpeed = 2;
     public float gravity = 9.8f;
     public float fallVelocity;
-    public float jumpForce = 5;
+    public float jumpForce = 3;
+    public float runningSpeed = 4f;
+    public float acceleration = 0.025f;
 
     public Camera mainCamera;
     private Vector3 camForward;
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour
     private Vector3 hitNormal;
     public float slideVelocity;
     public float slopeForceDown;
+
+    // private Animator anim;
 
     private Vector3 spawn = new Vector3(0, 0, 0);
 
@@ -83,10 +87,26 @@ public class Player : MonoBehaviour
 
     public void playerSkills()
     {
+        //Jump
         if (player.isGrounded && Input.GetButtonDown("Jump"))
         {
             fallVelocity = jumpForce;
             movePlayer.y = fallVelocity;
+        }
+
+        //Run
+        if (Input.GetKey("left shift") && playerSpeed >= 2)
+        {
+            if (playerSpeed <= runningSpeed)
+            {
+                playerSpeed += acceleration;
+            }
+        }
+        else if (playerSpeed >= 2.025)
+        {
+            {
+                playerSpeed -= acceleration;
+            }
         }
     }
 
