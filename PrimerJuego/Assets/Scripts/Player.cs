@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public float fallVelocity;
     public float jumpForce = 3;
     public float runningSpeed = 4f;
-    public float acceleration = 0.025f;
+    public float acceleration = 0.02f;
 
     public Camera mainCamera;
     private Vector3 camForward;
@@ -41,15 +41,9 @@ public class Player : MonoBehaviour
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
 
-        //Controlling inputs
         playerInput = new Vector3(horizontalMove, 0, verticalMove);
-        float magnitude = playerInput.magnitude;
-        // playerInput = Vector3.ClampMagnitude(playerInput, 1);
+        playerInput = Vector3.ClampMagnitude(playerInput, 1);
 
-        magnitude = Mathf.Clamp01(magnitude);
-        playerInput.Normalize();
-
-        //Camera
         camDirection();
 
         movePlayer = playerInput.x * camRight + playerInput.z * camForward;
@@ -58,19 +52,11 @@ public class Player : MonoBehaviour
 
         player.transform.LookAt(player.transform.position + movePlayer);
 
-        //Movement
         setGravity();
 
         playerSkills();
 
-        // player.Move(movePlayer * playerSpeed * Time.deltaTime);
-        transform.Translate(playerInput * magnitude * playerSpeed * Time.deltaTime, Space.World);
-
-        if (playerInput != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(playerInput, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        }
+        player.Move(movePlayer * playerSpeed * Time.deltaTime);
     }
 
     void setGravity()
@@ -110,7 +96,7 @@ public class Player : MonoBehaviour
         }
 
         //Run
-        if (Input.GetKey("left shift") && playerSpeed >= 2)
+        if (Input.GetKey("left shift") && (horizontalMove != 0 || verticalMove != 0))
         {
             if (playerSpeed <= runningSpeed)
             {
