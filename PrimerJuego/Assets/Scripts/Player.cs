@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public CharacterController player;
 
     public float playerSpeed = 2;
+    public float rotationSpeed = 2;
     public float gravity = 9.8f;
     public float fallVelocity;
     public float jumpForce = 3;
@@ -40,9 +41,15 @@ public class Player : MonoBehaviour
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
 
+        //Controlling inputs
         playerInput = new Vector3(horizontalMove, 0, verticalMove);
-        playerInput = Vector3.ClampMagnitude(playerInput, 1);
+        float magnitude = playerInput.magnitude;
+        // playerInput = Vector3.ClampMagnitude(playerInput, 1);
 
+        magnitude = Mathf.Clamp01(magnitude);
+        playerInput.Normalize();
+
+        //Camera
         camDirection();
 
         movePlayer = playerInput.x * camRight + playerInput.z * camForward;
@@ -51,11 +58,19 @@ public class Player : MonoBehaviour
 
         player.transform.LookAt(player.transform.position + movePlayer);
 
+        //Movement
         setGravity();
 
         playerSkills();
 
-        player.Move(movePlayer * playerSpeed * Time.deltaTime);
+        // player.Move(movePlayer * playerSpeed * Time.deltaTime);
+        transform.Translate(playerInput * magnitude * playerSpeed * Time.deltaTime, Space.World);
+
+        if (playerInput != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(playerInput, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 
     void setGravity()
