@@ -16,6 +16,6 @@ public class ProvisionalCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = target.position + new Vector3(lenght, height, 0);
+        transform.position = target.position + new Vector3(0, height, lenght);
     }
 }
