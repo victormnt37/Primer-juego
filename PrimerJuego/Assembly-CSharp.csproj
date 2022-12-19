@@ -38,8 +38,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\PlayerCamera.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\ProvisionalCamera.cs" />
      <Compile Include="Assets\Scripts\PointAndShoot.cs" />
+     <Compile Include="Assets\Scripts\ProvisionalCamera.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2022.1.20f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

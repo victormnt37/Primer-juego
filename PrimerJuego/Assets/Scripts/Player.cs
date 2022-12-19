@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public float fallVelocity;
     public float jumpForce = 3;
     public float runningSpeed = 4f;
-    public float acceleration = 0.02f;
+    public float acceleration = 0.015f;
 
     public Camera mainCamera;
     private Vector3 camForward;
@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
                 playerSpeed += acceleration;
             }
         }
-        else if (playerSpeed >= 2.025)
+        else if (playerSpeed >= 2.02)
         {
             {
                 playerSpeed -= acceleration;
