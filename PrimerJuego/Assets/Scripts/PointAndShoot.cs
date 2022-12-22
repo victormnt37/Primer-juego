@@ -20,8 +20,8 @@ public class PointAndShoot : MonoBehaviour
     {
         target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, transform.position.y - shootingHeight, Input.mousePosition.z));
         mousePos = Input.mousePosition;
-        Debug.Log("target" + target);
+        // Debug.Log("target" + target);
         crosshairs.transform.position = new Vector2(target.x, target.z);
-        Debug.Log(crosshairs.transform.position);
+        // Debug.Log(crosshairs.transform.position);
     }
 }

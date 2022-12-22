@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class Player : MonoBehaviour
 {
     public float horizontalMove;
@@ -11,16 +12,16 @@ public class Player : MonoBehaviour
 
     public float playerSpeed = 2;
     public float rotationSpeed = 2;
-    public float gravity = 9.8f;
+    // public float gravity = 9.8f;
     public float fallVelocity;
     public float jumpForce = 3;
     public float runningSpeed = 4f;
     public float acceleration = 5f;
 
-    public Camera mainCamera;
-    private Vector3 camForward;
-    private Vector3 camRight;
-    private Vector3 movePlayer;
+    // public Camera mainCamera;
+    // private Vector3 camForward;
+    // private Vector3 camRight;
+    // private Vector3 movePlayer;
 
     public bool isOnSlope = false;
     private Vector3 hitNormal;
@@ -29,11 +30,17 @@ public class Player : MonoBehaviour
 
     // private Animator anim;
 
+    public float jumpButtonPeriod;
+    private float originalStepOffset;
+    private float? lastGroundedTime;
+    private float? jumpButtonPressedTime;
+
     private Vector3 spawn = new Vector3(0, 0, 0);
 
     void Start()
     {
         player = GetComponent<CharacterController>();
+        originalStepOffset = player.stepOffset;
     }
 
     void Update()
@@ -42,57 +49,91 @@ public class Player : MonoBehaviour
         verticalMove = Input.GetAxis("Vertical");
 
         playerInput = new Vector3(horizontalMove, 0, verticalMove);
-        playerInput = Vector3.ClampMagnitude(playerInput, 1);
+        // playerInput = Vector3.ClampMagnitude(playerInput, 1);
+        float magnitude = Mathf.Clamp01(playerInput.magnitude) * playerSpeed;
 
-        camDirection();
+        playerInput.Normalize();
 
-        movePlayer = playerInput.x * camRight + playerInput.z * camForward;
+        // camDirection();
 
-        movePlayer = movePlayer * playerSpeed;
+        // movePlayer = playerInput.x * camRight + playerInput.z * camForward;
 
-        player.transform.LookAt(player.transform.position + movePlayer);
+        // movePlayer = movePlayer * playerSpeed;
+
+        // player.transform.LookAt(player.transform.position + movePlayer);
 
         setGravity();
 
         playerSkills();
 
-        player.Move(movePlayer * playerSpeed * Time.deltaTime);
+        //Rotations
+        Vector3 velocity = playerInput * magnitude;
+        velocity.y = fallVelocity;
+
+        player.Move(velocity * Time.deltaTime);
+
+        if (playerInput != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(playerInput, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 
     void setGravity()
     {
+        fallVelocity += Physics.gravity.y * Time.deltaTime;
+
         if (player.isGrounded)
         {
-            fallVelocity = -gravity * Time.deltaTime;
+            // fallVelocity = -gravity * Time.deltaTime;
+            lastGroundedTime = Time.time;
         }
-        else
-        {
-            fallVelocity -= gravity * Time.deltaTime;
-        }
-        movePlayer.y = fallVelocity;
+        // else
+        // {
+        //     fallVelocity -= gravity * Time.deltaTime;
+        // }
+        // movePlayer.y = fallVelocity;
 
-        slideDown();
+        // slideDown();
     }
 
-    void camDirection()
-    {
-        camForward = mainCamera.transform.forward;
-        camRight = mainCamera.transform.right;
+    // void camDirection()
+    // {
+    //     camForward = mainCamera.transform.forward;
+    //     camRight = mainCamera.transform.right;
 
-        camForward.y = 0;
-        camRight.y = 0;
+    //     camForward.y = 0;
+    //     camRight.y = 0;
 
-        camForward = camForward.normalized;
-        camRight = camRight.normalized;
-    }
+    //     camForward = camForward.normalized;
+    //     camRight = camRight.normalized;
+    // }
 
     public void playerSkills()
     {
         //Jump
-        if (player.isGrounded && Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
-            fallVelocity = jumpForce;
-            movePlayer.y = fallVelocity;
+            jumpButtonPressedTime = Time.time;
+        }
+
+        if (Time.time - lastGroundedTime <= jumpButtonPeriod)
+        {
+            player.stepOffset = originalStepOffset;
+
+            fallVelocity = -0.5f;
+
+            if (Time.time - jumpButtonPressedTime <= jumpButtonPeriod)
+            {
+                fallVelocity = jumpForce;
+                jumpButtonPressedTime = null;
+                lastGroundedTime = null;
+            }
+        }
+        else
+        {
+            player.stepOffset = 0f;
         }
 
         //Run
@@ -111,16 +152,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void slideDown()
-    {
-        isOnSlope = Vector3.Angle(Vector3.up, hitNormal) >= player.slopeLimit;
+    // public void slideDown()
+    // {
+    //     isOnSlope = Vector3.Angle(Vector3.up, hitNormal) >= player.slopeLimit;
 
-        if (isOnSlope)
-        {
-            movePlayer.x += ((1f - hitNormal.y) * hitNormal.x * slideVelocity);
-            movePlayer.z += ((1f - hitNormal.y) * hitNormal.z * slideVelocity);
+    //     if (isOnSlope)
+    //     {
+    //         movePlayer.x += ((1f - hitNormal.y) * hitNormal.x * slideVelocity);
+    //         movePlayer.z += ((1f - hitNormal.y) * hitNormal.z * slideVelocity);
 
-            movePlayer.y = slopeForceDown;
-        }
-    }
+    //         movePlayer.y = slopeForceDown;
+    //     }
+    // }
 }
