@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
 
+    public GameObject crosshairs;
+
     private Vector3 spawn = new Vector3(0, 0, 0);
 
     void Start()
@@ -86,29 +88,10 @@ public class Player : MonoBehaviour
 
         if (player.isGrounded)
         {
-            // fallVelocity = -gravity * Time.deltaTime;
             lastGroundedTime = Time.time;
         }
-        // else
-        // {
-        //     fallVelocity -= gravity * Time.deltaTime;
-        // }
-        // movePlayer.y = fallVelocity;
-
         // slideDown();
     }
-
-    // void camDirection()
-    // {
-    //     camForward = mainCamera.transform.forward;
-    //     camRight = mainCamera.transform.right;
-
-    //     camForward.y = 0;
-    //     camRight.y = 0;
-
-    //     camForward = camForward.normalized;
-    //     camRight = camRight.normalized;
-    // }
 
     public void playerSkills()
     {
@@ -150,6 +133,19 @@ public class Player : MonoBehaviour
                 playerSpeed -= acceleration * Time.deltaTime;
             }
         }
+
+        //Shoot
+        if (Input.GetMouseButtonDown(0))
+        {
+            Quaternion target = Quaternion.LookRotation(crosshairs.transform.position, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, target, rotationSpeed * Time.deltaTime);
+            shoot();
+        }
+    }
+
+    public void shoot()
+    {
+
     }
 
     // public void slideDown()

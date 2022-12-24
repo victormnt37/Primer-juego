@@ -5,9 +5,10 @@ using UnityEngine;
 public class PointAndShoot : MonoBehaviour
 {
     public Vector3 target;
-    public float shootingHeight = 3; //this variable helps calculate the height of the bullet on the screen, taking reference the camera height
     public GameObject crosshairs;
+    public float crosshairsHeight = 1f;
     public Vector3 mousePos;
+    public float ZmousePos;
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +19,10 @@ public class PointAndShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, transform.position.y - shootingHeight, Input.mousePosition.z));
         mousePos = Input.mousePosition;
-        // Debug.Log("target" + target);
-        crosshairs.transform.position = new Vector2(target.x, target.z);
-        // Debug.Log(crosshairs.transform.position);
+        mousePos.z = ZmousePos;
+        Debug.Log(GetComponent<Camera>().ScreenToWorldPoint(mousePos));
+
+        crosshairs.transform.position = new Vector3(GetComponent<Camera>().ScreenToWorldPoint(mousePos).x, crosshairsHeight, GetComponent<Camera>().ScreenToWorldPoint(mousePos).z);
     }
 }
