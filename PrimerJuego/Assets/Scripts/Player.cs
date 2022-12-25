@@ -137,8 +137,10 @@ public class Player : MonoBehaviour
         //Shoot
         if (Input.GetMouseButtonDown(0))
         {
-            Quaternion target = Quaternion.LookRotation(crosshairs.transform.position, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, target, rotationSpeed * Time.deltaTime);
+            // Quaternion target = Quaternion.LookRotation(crosshairs.transform.position, Vector3.up);
+            // Debug.Log(target);
+            Vector3 shootingDirection = Vector3.RotateTowards(transform.forward, crosshairs.transform.position, rotationSpeed * 100 * Time.deltaTime, 0.0f);
+            transform.rotation = Quaternion.LookRotation(shootingDirection);
             shoot();
         }
     }

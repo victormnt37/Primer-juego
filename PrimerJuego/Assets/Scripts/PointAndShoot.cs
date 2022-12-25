@@ -21,7 +21,7 @@ public class PointAndShoot : MonoBehaviour
     {
         mousePos = Input.mousePosition;
         mousePos.z = ZmousePos;
-        Debug.Log(GetComponent<Camera>().ScreenToWorldPoint(mousePos));
+        // Debug.Log(GetComponent<Camera>().ScreenToWorldPoint(mousePos));
 
         crosshairs.transform.position = new Vector3(GetComponent<Camera>().ScreenToWorldPoint(mousePos).x, crosshairsHeight, GetComponent<Camera>().ScreenToWorldPoint(mousePos).z);
     }
