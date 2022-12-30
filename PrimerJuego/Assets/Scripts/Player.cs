@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     public float playerSpeed = 2;
     public float rotationSpeed = 2;
-    // public float gravity = 9.8f;
+    // public float gravity = 9.8f;   
     public float fallVelocity;
     public float jumpForce = 3;
     public float runningSpeed = 4f;
