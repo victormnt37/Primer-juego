@@ -15857,8 +15857,30 @@ MonoBehaviour:
   isOnSlope: 0
   slideVelocity: 0
   slopeForceDown: 0
+  x: 0
+  y: 0
   jumpButtonPeriod: 0
   crosshairs: {fileID: 605411704}
+--- !u!95 &2094387463
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094387459}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: a1ed36c092ba9624ab6a4f19f27575a4, type: 3}
+  m_Controller: {fileID: 9100000, guid: 2b4b17462b97e954ab687290b7ba3716, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2107522180 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: db67ddc9998e4014c8b0b17223dd26cb, type: 3}
