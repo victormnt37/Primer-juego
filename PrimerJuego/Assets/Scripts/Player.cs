@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
     public float slideVelocity;
     public float slopeForceDown;
 
-    // private Animator anim;
+    private Animator anim;
+    public float x, y;
 
     public float jumpButtonPeriod;
     private float originalStepOffset;
@@ -43,6 +44,9 @@ public class Player : MonoBehaviour
     {
         player = GetComponent<CharacterController>();
         originalStepOffset = player.stepOffset;
+        anim = GetComponent<Animator>();
+        anim.SetFloat("X", x);
+        anim.SetFloat("Y", y);
     }
 
     void Update()
@@ -139,7 +143,7 @@ public class Player : MonoBehaviour
         {
             // Quaternion target = Quaternion.LookRotation(crosshairs.transform.position, Vector3.up);
             // Debug.Log(target);
-            Vector3 shootingDirection = Vector3.RotateTowards(transform.forward, crosshairs.transform.position, rotationSpeed * 100 * Time.deltaTime, 0.0f);
+            Vector3 shootingDirection = Vector3.RotateTowards(transform.forward, crosshairs.transform.position, rotationSpeed * 5 * Time.deltaTime, 0.0f);
             transform.rotation = Quaternion.LookRotation(shootingDirection);
             shoot();
         }
