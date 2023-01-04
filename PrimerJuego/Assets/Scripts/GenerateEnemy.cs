@@ -6,7 +6,7 @@ public class GenerateEnemy : MonoBehaviour
 {
     public GameObject EnemyPrefab;
     public float spawnTime = 15;
-    public float SpawnRadius = 1;
+    public float SpawnRadius = 5;
     public float lastEnemyTime = 10f;
 
     void EnemyGenerate()
