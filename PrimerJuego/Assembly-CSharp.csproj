@@ -37,10 +37,15 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\PlayerCamera.cs" />
+     <Compile Include="Assets\Scripts\Shoot.cs" />
      <Compile Include="Assets\Scripts\RotationQuaternionJavi.cs" />
+     <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\Health.cs" />
      <Compile Include="Assets\Scripts\GenerateEnemy.cs" />
      <Compile Include="Assets\Scripts\PointAndShoot.cs" />
+     <Compile Include="Assets\Scripts\Bala.cs" />
+     <Compile Include="Assets\Scripts\Gun.cs" />
      <Compile Include="Assets\Scripts\ProvisionalCamera.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2022.1.20f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
