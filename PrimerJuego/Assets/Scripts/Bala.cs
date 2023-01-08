@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class Bala : MonoBehaviour
 {
@@ -8,20 +10,23 @@ public class Bala : MonoBehaviour
     public GameObject boom;
     public float Speed = 10;
     public float flyTime = 10f;
-
+    
     Rigidbody rb;
 
-    //Salud
-    public float damage=2f;
+    //daño de la bala
+    public float damage = 2f;
 
-    // Start is called before the first frame update
+   /* public UnityEvent onDamageTaken;
+    public UnityEvent onDead;*/
+
+   
     void Start()
     {
         player=GameObject.Find("Player");
-       // boom=GameObject.Find("Boom");
+        //boom=GameObject.Find("Boom");
 
     }
-   private void Awake(){
+     void Awake(){
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * Speed, ForceMode.VelocityChange);
         Invoke("DestroyBullet", flyTime);
@@ -52,9 +57,10 @@ public class Bala : MonoBehaviour
             if (b.CompareTag("Enemigo")){
                 b.SendMessage("DamageTaken", damage);
                 DestroyBullet();
+                
+
             }
-            //Destroy(gameObject);
+        // Destroy(gameObject);  
 
-    }
-
+     }
 }

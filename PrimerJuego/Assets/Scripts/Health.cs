@@ -7,6 +7,8 @@ public class Health : MonoBehaviour
 {
 
     public float currentHealth = 5;
+    
+
     public UnityEvent onDamageTaken;
     public UnityEvent onDead;
 
@@ -30,5 +32,15 @@ public class Health : MonoBehaviour
             onDead.Invoke();
         }
 
-    }
+    /*void OnTriggerEnter(Collider col){
+
+            currentHealth -= Bala.damage;
+
+            if (currentHealth <= 0){
+                enemyDead = true;
+
+                Destroy(gameObject, 1f);
+            }
+    }*/
+}
 }

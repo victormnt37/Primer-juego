@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
     public void playerSkills()
     {
         //Jump
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpButtonPressedTime = Time.time;
         }
