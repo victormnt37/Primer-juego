@@ -3,7 +3,22 @@ guid: 30ffd1b929fc82e4eb1d42aaafbc4cd9
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: asphalt_02_diff_4k
+    second: {fileID: 2800000, guid: ae9a6308bccb3c24e89bf1843a5a0f8c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: asphalt_02_nor_gl_4k
+    second: {fileID: 2800000, guid: 8634c1718dfc10c4abd7d454f532a192, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: asphalt_02_rough_4k
+    second: {fileID: 2800000, guid: 183b0da20e08ddb45b4c087526277eb6, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
