@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: asphalt_02_diff_4k
-    second: {fileID: 2800000, guid: 371c8928c2e335146924b1e51caeba62, type: 3}
+    second: {fileID: 2800000, guid: bab33920a91dfd041bf3902b82c6b50b, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: asphalt_02_nor_gl_4k
-    second: {fileID: 2800000, guid: 47002f2e4293d6c4486e5470b49f555a, type: 3}
+    second: {fileID: 2800000, guid: c2e00f80fbe11dc49bdae05875aa6737, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: asphalt_02_rough_4k
-    second: {fileID: 2800000, guid: 3600c51eac639a64c8247e985bcd4b13, type: 3}
+    second: {fileID: 2800000, guid: 1c99d00dbdb54b54ba8a9fa112e91392, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
