@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.AI;
+
 
 public class Health : MonoBehaviour
 {
 
-    public float currentHealth = 5;
+    public float currentHealth = 1;
     
 
     public UnityEvent onDamageTaken;
@@ -32,15 +34,6 @@ public class Health : MonoBehaviour
             onDead.Invoke();
         }
 
-    /*void OnTriggerEnter(Collider col){
-
-            currentHealth -= Bala.damage;
-
-            if (currentHealth <= 0){
-                enemyDead = true;
-
-                Destroy(gameObject, 1f);
-            }
-    }*/
+   
 }
 }

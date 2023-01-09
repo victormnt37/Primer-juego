@@ -16,8 +16,6 @@ public class Bala : MonoBehaviour
     //daño de la bala
     public float damage = 2f;
 
-   /* public UnityEvent onDamageTaken;
-    public UnityEvent onDead;*/
 
    
     void Start()
