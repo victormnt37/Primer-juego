@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MADERA
-    second: {fileID: 3152515523000958905, guid: 9ec53904928e88b448708659e5bdd58a, type: 3}
+    second: {fileID: 2100000, guid: 701e652c7c77fc444aa14507f931e6d6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
