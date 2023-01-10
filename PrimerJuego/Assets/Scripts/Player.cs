@@ -53,8 +53,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
+        anim.SetFloat("X", horizontalMove);
+        anim.SetFloat("Y", verticalMove);
 
         playerInput = new Vector3(horizontalMove, 0, verticalMove);
         // playerInput = Vector3.ClampMagnitude(playerInput, 1);
