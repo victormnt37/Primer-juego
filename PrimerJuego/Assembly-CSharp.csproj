@@ -46,6 +46,7 @@
      <Compile Include="Assets\Scripts\StartMenu.cs" />
      <Compile Include="Assets\Scripts\PointAndShoot.cs" />
      <Compile Include="Assets\Scripts\Bala.cs" />
+     <Compile Include="Assets\Scripts\NavMeshController.cs" />
      <Compile Include="Assets\Scripts\Gun.cs" />
      <Compile Include="Assets\Scripts\ProvisionalCamera.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
