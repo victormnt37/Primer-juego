@@ -9,16 +9,18 @@ public class Gun : MonoBehaviour
     public GameObject bulletPrefab;
     public float shootCooldown = 0.25f;
     float lastShotTime = 0;
-    public Gun gun;
+    // public Gun gun;
 
- 
-    public void Shoot(){
-         if (Time.time - lastShotTime > shootCooldown){
+
+    public void Shoot()
+    {
+        if (Time.time - lastShotTime > shootCooldown)
+        {
             GameObject.Instantiate(bulletPrefab, transform.position, transform.rotation);
             lastShotTime = Time.time;
         }
-        if (Input.GetKeyDown (KeyCode.Mouse0)){
-            gun.Shoot ();
-            }
+        // if (Input.GetKeyDown (KeyCode.Mouse0)){
+        //     gun.Shoot ();
+        //     }
     }
 }
