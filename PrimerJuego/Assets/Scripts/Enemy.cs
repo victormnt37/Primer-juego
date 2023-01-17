@@ -39,5 +39,8 @@ public class Enemy : MonoBehaviour{
       targetPosition.y = 0;
 
     }
+    public void onDeadHandler(){
+        Destroy(gameObject);
+    }
 }
 

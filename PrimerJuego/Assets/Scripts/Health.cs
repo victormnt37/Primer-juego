@@ -8,7 +8,8 @@ using UnityEngine.AI;
 public class Health : MonoBehaviour
 {
 
-    public float currentHealth = 1;
+    public float currentHealth = 3;
+    public float maxHealth = 3;
     
 
     public UnityEvent onDamageTaken;

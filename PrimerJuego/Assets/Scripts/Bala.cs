@@ -47,18 +47,18 @@ public class Bala : MonoBehaviour
         Destroy(gameObject);
     }
      void OnTriggerEnter(Collider b){
-            if(b.gameObject.tag=="Enemigo"){
+            /*if(b.gameObject.tag=="Enemigo"){
             Destroy(b.gameObject);
             GameObject be = Instantiate(boom,transform.position,transform.rotation);
             Destroy(be,2);
-        }
+        }*/
+
             if (b.CompareTag("Enemigo")){
                 b.SendMessage("DamageTaken", damage);
                 DestroyBullet();
                 
 
             }
-        // Destroy(gameObject);  
 
      }
 }
