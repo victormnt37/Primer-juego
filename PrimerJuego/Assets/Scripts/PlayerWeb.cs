@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using Unity.Netcode;
 
 
-public class Player : MonoBehaviour
+public class PlayerWeb : NetworkBehaviour
 {
     public float horizontalMove;
     public float verticalMove;
@@ -185,7 +185,29 @@ public class Player : MonoBehaviour
     [ServerRpc]
     void SubmitChangeRequestServerRpc(Vector2 desp, ServerRpcParams rpcParams = default)
     {
-        Desplace(desp);
+        float magnitude = Mathf.Clamp01(despTemp.magnitude) * playerSpeed;
+
+        despTemp.Normalize();
+
+        setGravity();
+
+        playerSkills();
+
+        //Rotations
+        Vector3 velocity = despTemp * magnitude;
+        velocity.y = fallVelocity;
+
+        player.Move(velocity * Time.deltaTime); //This does not work. Cannot move character controller "player" since is not a network variable
+
+        if (despTemp != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(despTemp, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
+
+        Rotation.Value = transform.rotation;
+        Position.Value = transform.position;
     }
 
     [ClientRpc]
