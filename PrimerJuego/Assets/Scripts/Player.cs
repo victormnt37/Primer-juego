@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
 public class Player : MonoBehaviour
 {
     public float horizontalMove;
@@ -39,6 +38,7 @@ public class Player : MonoBehaviour
     private float? jumpButtonPressedTime;
 
     public GameObject crosshairs;
+    NavMeshAgent agent;
 
     private Vector3 spawn = new Vector3(0, 0, 0);
 
@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetFloat("X", x);
         anim.SetFloat("Y", y);
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -150,14 +151,17 @@ public class Player : MonoBehaviour
             // Debug.Log(target);
             // Vector3 shootingDirection = Vector3.RotateTowards(transform.forward, crosshairs.transform.position, rotationSpeed * 5 * Time.deltaTime, 0.0f);
             // transform.rotation = Quaternion.LookRotation(shootingDirection);
-            transform.LookAt(crosshairs.transform.position, Vector3.up);
-            shoot();
+            // transform.LookAt(crosshairs.transform.position, Vector3.up);
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            {
+                Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                Debug.Log(hit.point);
+                // transform.LookAt(hit.point, Vector3.up);
+                transform.LookAt(target, Vector3.up);
+            }
         }
-    }
-
-    public void shoot()
-    {
-
     }
 
     // public void slideDown()
