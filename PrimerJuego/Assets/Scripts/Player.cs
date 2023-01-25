@@ -176,4 +176,8 @@ public class Player : MonoBehaviour
     //         movePlayer.y = slopeForceDown;
     //     }
     // }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.Log(hit.gameObject.tag);
+    }
 }

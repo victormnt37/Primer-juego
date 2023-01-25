@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Enemy : MonoBehaviour{
+public class Enemy : MonoBehaviour
+{
 
     public float movementSpeed = 1f;
     Vector3 targetPosition;
@@ -20,26 +21,29 @@ public class Enemy : MonoBehaviour{
     // Update is called once per frame
     void Update()
     {
-         towardsTarget = targetPosition - transform.position;
+        towardsTarget = targetPosition - transform.position;
 
-        if (towardsTarget.magnitude < 0.25f){
-            
+        if (towardsTarget.magnitude < 0.25f)
+        {
+
             RecalculateTargetPosition();
 
         }
-       
-     transform.position += towardsTarget.normalized * movementSpeed * Time.deltaTime;
-     Debug.DrawLine (transform.position, targetPosition, Color.green);
+
+        transform.position += towardsTarget.normalized * movementSpeed * Time.deltaTime;
+        Debug.DrawLine(transform.position, targetPosition, Color.green);
 
     }
 
-    void RecalculateTargetPosition(){
+    void RecalculateTargetPosition()
+    {
 
-      targetPosition = transform.position + Random.insideUnitSphere * wanderRadius;
-      targetPosition.y = 0;
+        targetPosition = transform.position + Random.insideUnitSphere * wanderRadius;
+        targetPosition.y = 0;
 
     }
-    public void onDeadHandler(){
+    public void onDeadHandler()
+    {
         Destroy(gameObject);
     }
 }
