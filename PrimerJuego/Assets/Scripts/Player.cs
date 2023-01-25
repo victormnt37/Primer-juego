@@ -5,6 +5,10 @@ using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
+    public Texture2D cursorTexture;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
+
     public float horizontalMove;
     public float verticalMove;
     private Vector3 playerInput;
@@ -44,6 +48,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
         player = GetComponent<CharacterController>();
         originalStepOffset = player.stepOffset;
         anim = GetComponent<Animator>();
