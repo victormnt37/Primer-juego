@@ -44964,6 +44964,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc8642b63ea2d94e87cf7f80e0722f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 0}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
   horizontalMove: 0
   verticalMove: 0
   player: {fileID: 2094387460}
