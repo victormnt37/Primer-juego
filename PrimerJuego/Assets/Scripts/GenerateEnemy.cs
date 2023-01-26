@@ -5,8 +5,8 @@ using UnityEngine;
 public class GenerateEnemy : MonoBehaviour
 {
     public GameObject EnemyPrefab;
-    public float spawnTime = 15;
-    public float SpawnRadius = 5;
+    public float spawnTime = 5;
+    public float SpawnRadius = 3;
     public float lastEnemyTime = 10f;
 
     void EnemyGenerate()

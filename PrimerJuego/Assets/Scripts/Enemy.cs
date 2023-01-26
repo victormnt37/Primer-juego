@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
     {
 
         targetPosition = transform.position + Random.insideUnitSphere * wanderRadius;
-        targetPosition.y = 0;
+        targetPosition.y = 1;
 
     }
     public void onDeadHandler()

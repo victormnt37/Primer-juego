@@ -162,7 +162,6 @@ public class Player : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
                 Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-                Debug.Log(hit.point);
                 // transform.LookAt(hit.point, Vector3.up);
                 transform.LookAt(target, Vector3.up);
             }

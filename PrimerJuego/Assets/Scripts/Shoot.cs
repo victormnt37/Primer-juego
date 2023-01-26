@@ -10,8 +10,9 @@ public class Shoot : MonoBehaviour
 
     /*public float Speed = 10;
     public float flyTime = 3f;
-*/
+    */
 
+    // Este shoot se debe aplicar a un arma, no al player directamente, pricipalmente por la posición de disparo
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class Shoot : MonoBehaviour
         {
             // Vector3 shootingPoint = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
 
-            Debug.Log("transform.position" + transform.position);
+            // Debug.Log("transform.position" + transform.position);
             // Debug.Log("shootingPoint" + shootingPoint);
 
             GameObject.Instantiate(bulletPrefab, transform.position, transform.rotation);

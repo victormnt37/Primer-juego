@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22983,11 +22983,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bad0d146d151ddd4396378ff0e80c7b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.099998094
+      value: 0.099999405
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bad0d146d151ddd4396378ff0e80c7b0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -136.7
+      value: -147.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bad0d146d151ddd4396378ff0e80c7b0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -37269,8 +37269,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752282948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -92.21, y: 1.81, z: -149.76}
-  m_LocalScale: {x: 0.9671536, y: 1.7222408, z: 1}
+  m_LocalPosition: {x: -100, y: 1, z: -135}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -37289,8 +37289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 9036945614753962591, guid: 171ad524a12c3604aa87176e39d7bacc, type: 3}
-  spawnTime: 10
-  SpawnRadius: 10
+  spawnTime: 5
+  SpawnRadius: 3
   lastEnemyTime: 3
 --- !u!1001 &1757401877
 PrefabInstance:
