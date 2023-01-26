@@ -10,21 +10,21 @@ public class Bala : MonoBehaviour
     public GameObject boom;
     public float Speed = 10;
     public float flyTime = 10f;
-    
+
     Rigidbody rb;
 
     //daño de la bala
     public float damage = 2f;
 
 
-   
     void Start()
     {
-        player=GameObject.Find("Player");
+        player = GameObject.Find("Player");
         //boom=GameObject.Find("Boom");
 
     }
-     void Awake(){
+    void Awake()
+    {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * Speed, ForceMode.VelocityChange);
         Invoke("DestroyBullet", flyTime);
@@ -33,32 +33,35 @@ public class Bala : MonoBehaviour
     void Update()
     {
 
-        if(Vector3.Distance(player.transform.position,transform.position)>100){
-               Debug.Log("desapareguem per distancia") ;
-               if (gameObject != null){
+        if (Vector3.Distance(player.transform.position, transform.position) > 100)
+        {
+            if (gameObject != null)
+            {
                 Destroy(gameObject);
-
-               }
-        } 
+            }
+        }
     }
-   
 
-    void DestroyBullet(){
+
+    void DestroyBullet()
+    {
         Destroy(gameObject);
     }
-     void OnTriggerEnter(Collider b){
-            /*if(b.gameObject.tag=="Enemigo"){
-            Destroy(b.gameObject);
-            GameObject be = Instantiate(boom,transform.position,transform.rotation);
-            Destroy(be,2);
-        }*/
+    void OnTriggerEnter(Collider b)
+    {
+        /*if(b.gameObject.tag=="Enemigo"){
+        Destroy(b.gameObject);
+        GameObject be = Instantiate(boom,transform.position,transform.rotation);
+        Destroy(be,2);
+    }*/
 
-            if (b.CompareTag("Enemigo")){
-                b.SendMessage("DamageTaken", damage);
-                DestroyBullet();
-                
+        if (b.CompareTag("Enemigo"))
+        {
+            b.SendMessage("DamageTaken", damage);
+            DestroyBullet();
 
-            }
 
-     }
+        }
+
+    }
 }

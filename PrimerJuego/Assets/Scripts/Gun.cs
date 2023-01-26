@@ -11,7 +11,6 @@ public class Gun : MonoBehaviour
     float lastShotTime = 0;
     // public Gun gun;
 
-
     public void Shoot()
     {
         if (Time.time - lastShotTime > shootCooldown)

@@ -11,45 +11,51 @@ public class Shoot : MonoBehaviour
     /*public float Speed = 10;
     public float flyTime = 3f;
 */
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0)){
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
             Shot();
-
         }
-        
+
     }
 
-    void Shot(){
+    private void Shot()
+    {
+        if (Time.time - lastShotTime > shootCooldown)
+        {
+            // Vector3 shootingPoint = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
 
-        if (Time.time - lastShotTime > shootCooldown){
+            Debug.Log("transform.position" + transform.position);
+            // Debug.Log("shootingPoint" + shootingPoint);
+
             GameObject.Instantiate(bulletPrefab, transform.position, transform.rotation);
             lastShotTime = Time.time;
         }
     }
 
-   /* private void Awake(){
-        rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * Speed, ForceMode.VelocityChange);
-        Invoke("DestroyBullet", flyTime);
-    }
+    /* private void Awake(){
+         rb = GetComponent<Rigidbody>();
+         rb.AddForce(transform.forward * Speed, ForceMode.VelocityChange);
+         Invoke("DestroyBullet", flyTime);
+     }
 
-    void DestroyBullet(){
-        Destroy(gameObject);
-    }
+     void DestroyBullet(){
+         Destroy(gameObject);
+     }
 
-    /*private void OnTriggerEnter(Collider other){
-        if (other.CompareTag("Enemy")){
-            Debug.Log("Enemigo detectado");
-        }
-    }*/
+     /*private void OnTriggerEnter(Collider other){
+         if (other.CompareTag("Enemy")){
+             Debug.Log("Enemigo detectado");
+         }
+     }*/
 }

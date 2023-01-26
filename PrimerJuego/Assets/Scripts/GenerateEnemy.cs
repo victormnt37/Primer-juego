@@ -12,7 +12,7 @@ public class GenerateEnemy : MonoBehaviour
     void EnemyGenerate()
     {
         Vector3 randomPosition = transform.position + Random.insideUnitSphere * SpawnRadius;
-        randomPosition.y = 0.5f;
+        randomPosition.y = 1f;
         GameObject.Instantiate(EnemyPrefab, randomPosition, Quaternion.identity);
     }
     // Start is called before the first frame update
