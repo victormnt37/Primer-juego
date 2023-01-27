@@ -21,7 +21,6 @@ public class Bala : MonoBehaviour
     {
         player = GameObject.Find("Player");
         //boom=GameObject.Find("Boom");
-
     }
     void Awake()
     {
@@ -59,8 +58,6 @@ public class Bala : MonoBehaviour
         {
             b.SendMessage("DamageTaken", damage);
             DestroyBullet();
-
-
         }
 
     }
