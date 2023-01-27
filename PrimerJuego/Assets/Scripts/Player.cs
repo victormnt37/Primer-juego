@@ -23,11 +23,6 @@ public class Player : MonoBehaviour
     public float runningSpeed = 4f;
     public float acceleration = 5f;
 
-    // public Camera mainCamera;
-    // private Vector3 camForward;
-    // private Vector3 camRight;
-    // private Vector3 movePlayer;
-
     public bool isOnSlope = false;
     private Vector3 hitNormal;
     public float slideVelocity;
@@ -65,7 +60,6 @@ public class Player : MonoBehaviour
         anim.SetFloat("Y", verticalMove);
 
         playerInput = new Vector3(horizontalMove, 0, verticalMove);
-        // playerInput = Vector3.ClampMagnitude(playerInput, 1);
         float magnitude = Mathf.Clamp01(playerInput.magnitude) * playerSpeed;
 
         playerInput.Normalize();
