@@ -14,7 +14,7 @@ public class Bala : MonoBehaviour
     Rigidbody rb;
 
     //daño de la bala
-    public float damage = 2f;
+    public float damage = 1f;
 
 
     void Start()

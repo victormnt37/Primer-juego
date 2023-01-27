@@ -51,7 +51,7 @@ MonoBehaviour:
   boom: {fileID: 0}
   Speed: 40
   flyTime: 3
-  damage: 2
+  damage: 1
 --- !u!65 &4774824546956993192
 BoxCollider:
   m_ObjectHideFlags: 0
