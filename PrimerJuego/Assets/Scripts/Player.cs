@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
 
     private Animator anim;
     public float x, y;
+    private bool isJumping;
+    private bool isGrounded;
 
     public float jumpButtonPeriod;
     private float originalStepOffset;
@@ -106,10 +108,17 @@ public class Player : MonoBehaviour
             player.stepOffset = originalStepOffset;
 
             fallVelocity = -0.5f;
+            anim.SetBool("IsGrounded", true);
+            isGrounded = true;
+            anim.SetBool("IsJumping", false);
+            isJumping = false;
+            anim.SetBool("IsFalling", false);
 
             if (Time.time - jumpButtonPressedTime <= jumpButtonPeriod)
             {
                 fallVelocity = jumpForce;
+                anim.SetBool("IsJumping", true);
+                isJumping = true;
                 jumpButtonPressedTime = null;
                 lastGroundedTime = null;
             }
@@ -117,6 +126,13 @@ public class Player : MonoBehaviour
         else
         {
             player.stepOffset = 0f;
+            anim.SetBool("IsGrounded", false);
+            isGrounded = false;
+
+            if ((isJumping && fallVelocity < 0) || fallVelocity < -2)
+            {
+                anim.SetBool("IsFalling", true);
+            }
         }
 
         //Run
