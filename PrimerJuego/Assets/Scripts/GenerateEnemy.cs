@@ -8,6 +8,8 @@ public class GenerateEnemy : MonoBehaviour
     public float spawnTime = 5;
     public float SpawnRadius = 3;
     public float lastEnemyTime = 10f;
+    private float numberOfEnemys = 0;
+    public float maxNumberOfEnemys = 5;
 
     void EnemyGenerate()
     {
@@ -25,9 +27,10 @@ public class GenerateEnemy : MonoBehaviour
     void Update()
     //segundos desde que se inicia el juego
     {
-        if (Time.time - lastEnemyTime > spawnTime)
+        if ((Time.time - lastEnemyTime > spawnTime) && numberOfEnemys <= maxNumberOfEnemys)
         {
             EnemyGenerate();
+            ++numberOfEnemys;
             lastEnemyTime = Time.time;
         }
     }
