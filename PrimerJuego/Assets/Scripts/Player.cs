@@ -78,9 +78,14 @@ public class Player : MonoBehaviour
 
         if (playerInput != Vector3.zero)
         {
+            anim.SetBool("IsWalking", true);
             Quaternion toRotation = Quaternion.LookRotation(playerInput, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", false);
         }
     }
 
@@ -138,6 +143,8 @@ public class Player : MonoBehaviour
         //Run
         if (Input.GetKey("left shift") && (horizontalMove != 0 || verticalMove != 0))
         {
+            anim.SetBool("IsWalking", false);
+            anim.SetBool("IsRunning", true);
             if (playerSpeed <= runningSpeed)
             {
                 playerSpeed += acceleration * Time.deltaTime;
@@ -145,9 +152,9 @@ public class Player : MonoBehaviour
         }
         else if (playerSpeed >= 2.02)
         {
-            {
-                playerSpeed -= acceleration * Time.deltaTime;
-            }
+            anim.SetBool("IsRunning", false);
+            anim.SetBool("IsWalking", true);
+            playerSpeed -= acceleration * Time.deltaTime;
         }
 
         //Shoot
