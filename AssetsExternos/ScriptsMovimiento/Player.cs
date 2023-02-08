@@ -24,8 +24,6 @@ public class Player : MonoBehaviour
     public float slideVelocity;
     public float slopeForceDown;
 
-    private Vector3 spawn = new Vector3(0, 0, 0);
-
     void Start()
     {
         player = GetComponent<CharacterController>();
