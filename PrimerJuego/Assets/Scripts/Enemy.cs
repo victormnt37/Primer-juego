@@ -11,16 +11,24 @@ public class Enemy : MonoBehaviour
     Vector3 targetPosition;
     Vector3 towardsTarget;
     float wanderRadius = 5f;
+    public Transform objective;
+    NavMeshAgent agent;
+
 
     // Start is called before the first frame update
     void Start()
     {
         RecalculateTargetPosition();
+        agent=GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+        objective = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        agent.destination = objective.position;
+        
         towardsTarget = targetPosition - transform.position;
 
         if (towardsTarget.magnitude < 0.25f)
@@ -39,12 +47,14 @@ public class Enemy : MonoBehaviour
     {
 
         targetPosition = transform.position + Random.insideUnitSphere * wanderRadius;
-        targetPosition.y = 1;
+        targetPosition.y = 0;
 
     }
     public void onDeadHandler()
     {
         Destroy(gameObject);
     }
+    
+    
 }
 

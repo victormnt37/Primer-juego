@@ -170,16 +170,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    // public void slideDown()
-    // {
-    //     isOnSlope = Vector3.Angle(Vector3.up, hitNormal) >= player.slopeLimit;
-
-    //     if (isOnSlope)
-    //     {
-    //         movePlayer.x += ((1f - hitNormal.y) * hitNormal.x * slideVelocity);
-    //         movePlayer.z += ((1f - hitNormal.y) * hitNormal.z * slideVelocity);
-
-    //         movePlayer.y = slopeForceDown;
-    //     }
-    // }
+    
 }
